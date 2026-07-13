@@ -1,5 +1,3 @@
-# fine-tuning-cellpose-sam
-
 # Fine-Tuning Cellpose-SAM for 3D Cell Segmentation
 
 Fine-tune **Cellpose-SAM** on custom 3D microscopy datasets using manually annotated instance segmentation masks.
