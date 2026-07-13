@@ -28,7 +28,7 @@ TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 MASK_FILTER = "_masks"
 PRETRAINED_MODEL = "cpsam_v2"  # Other available models "cpdino", "cpdino-vitb", "cpsam"
 
-N_EPOCHS = 6
+N_EPOCHS = 100
 LEARNING_RATE = 1e-5
 WEIGHT_DECAY = 0.1
 BATCH_SIZE = 1

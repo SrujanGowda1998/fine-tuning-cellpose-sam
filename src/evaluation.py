@@ -7,6 +7,9 @@ import tifffile
 import torch
 from cellpose import models, metrics
 
+import matplotlib.pyplot as plt
+from cellpose import plot
+
 logger = logging.getLogger(__name__)
 
 
@@ -27,13 +30,14 @@ def load_finetuned_model(model_path):
 
 
 def run_inference(model, test_data):
-    """Run the model on every test image and return the list of predicted masks."""
+    """Run the model on every test image, visualize predictions, and return predicted masks."""
     logger.info("")
     logger.info("=" * 70)
     logger.info("Running inference on test dataset")
     logger.info("=" * 70)
 
     predicted_masks = []
+
     for i, image in enumerate(test_data):
         logger.info(f"Predicting test image {i + 1}/{len(test_data)}")
 
@@ -42,6 +46,18 @@ def run_inference(model, test_data):
 
         logger.info(f"Prediction shape: {masks.shape}")
         logger.info(f"Detected objects: {len(np.unique(masks)) - 1}")
+
+        # Visualize prediction
+        fig = plt.figure(figsize=(10, 10))
+        plot.show_segmentation(
+            fig,
+            image,
+            masks,
+            flows[0],
+            channels=[0, 0]
+        )
+        plt.suptitle(f"Test Image {i + 1}")
+        plt.show()
 
     return predicted_masks
 

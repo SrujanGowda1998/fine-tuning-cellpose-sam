@@ -75,7 +75,6 @@ def train_model(
             normalize=True,
             # compute flows during training
             compute_flows=True,
-            # we already dropped empty slices; don't let the default (5) nuke sparse ones
             min_train_masks=1,
         )
     except Exception:
